@@ -1,0 +1,11 @@
+E:\Gitlab\FindInFiles\FindInFiles\bin\Debug\FindInFiles.exe.config
+E:\Gitlab\FindInFiles\FindInFiles\bin\Debug\FindInFiles.exe
+E:\Gitlab\FindInFiles\FindInFiles\bin\Debug\FindInFiles.pdb
+E:\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.csproj.AssemblyReference.cache
+E:\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.csproj.SuggestedBindingRedirects.cache
+E:\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.Form1.resources
+E:\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.Properties.Resources.resources
+E:\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.csproj.GenerateResource.cache
+E:\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.csproj.CoreCompileInputs.cache
+E:\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.exe
+E:\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.pdb
