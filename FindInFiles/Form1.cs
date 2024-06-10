@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -88,7 +89,52 @@ namespace FindInFiles
 			}catch { }
 		}
 
-        private void bFindAll_Click(object sender, EventArgs e)
+		public static bool SearchString(string text, string searchTerm, bool matchCase, bool matchWholeWord)
+		{
+			if (string.IsNullOrEmpty(text) || string.IsNullOrEmpty(searchTerm))
+			{
+				return false;
+			}
+
+			var options = RegexOptions.None;
+			if (!matchCase)
+			{
+				options |= RegexOptions.IgnoreCase;
+			}
+
+			string pattern = searchTerm;
+			if (matchWholeWord)
+			{
+				pattern = @"\b" + searchTerm.Trim() + @"\b";
+			}
+
+			return Regex.IsMatch(text, pattern, options);
+		}
+
+		public static string ReplaceString(string text, string searchTerm,string ReplaceTerm, bool matchCase, bool matchWholeWord)
+		{
+			if (string.IsNullOrEmpty(text) || string.IsNullOrEmpty(searchTerm))
+			{
+				return text;
+			}
+
+			var options = RegexOptions.None;
+			if (!matchCase)
+			{
+				options |= RegexOptions.IgnoreCase;
+			}
+
+			string pattern = searchTerm;
+			if (matchWholeWord)
+			{
+				pattern = @"\b" + searchTerm.Trim() + @"\b";
+			}
+
+			string replacedText= Regex.Replace(text,pattern,ReplaceTerm,options);
+			return replacedText;
+		}
+
+		private void bFindAll_Click(object sender, EventArgs e)
         {
 			try
 			{
@@ -97,8 +143,12 @@ namespace FindInFiles
 				for (int i = 0; i < files.Count; i++)
 				{
 					string str = System.IO.File.ReadAllText(files[i].filepath);
-					if (str.Contains(tFind.Text))
+
+					if (SearchString(str,tFind.Text,cMatchCase.Checked,cMatchWholeWord.Checked))
 					{
+
+						//Regex.Match(str,tFind.Text,RegexOptions.);
+						
 						listBox1.Items.Add(files[i].filepath.Replace(path + "\\", ""));
 					}
 					lStatus.Text = "Searched in " + (i + 1) + "/" + files.Count + " files. found " + listBox1.Items.Count + " items";
@@ -115,7 +165,16 @@ namespace FindInFiles
 				int count = 0;
 				while (startIndex < richTextBox.TextLength)
 				{
-					int foundIndex = richTextBox.Find(textToFind, startIndex, RichTextBoxFinds.MatchCase);
+					var findOptions = RichTextBoxFinds.None;
+					if (cMatchCase.Checked)
+					{
+						findOptions |= RichTextBoxFinds.MatchCase; // Inverted logic for RichTextBoxFinds.MatchCase
+					}
+					if (cMatchWholeWord.Checked)
+					{
+						findOptions |= RichTextBoxFinds.WholeWord;
+					}
+					int foundIndex = richTextBox.Find(textToFind, startIndex, findOptions);
 					if (foundIndex != -1)
 					{
 						richTextBox.SelectionStart = foundIndex;
@@ -134,6 +193,32 @@ namespace FindInFiles
 			
 		}
 
+		private void SeekToFirstOccurence(RichTextBox richTextBox, string textToFind)
+		{
+
+			int startIndex = 0;
+			int count = 0;
+
+			var findOptions = RichTextBoxFinds.None;
+			if (cMatchCase.Checked)
+			{
+				findOptions |= RichTextBoxFinds.MatchCase; // Inverted logic for RichTextBoxFinds.MatchCase
+			}
+			if (cMatchWholeWord.Checked)
+			{
+				findOptions |= RichTextBoxFinds.WholeWord;
+			}
+			int foundIndex = richTextBox.Find(textToFind, startIndex, findOptions);
+			if (foundIndex != -1)
+			{
+				if (foundIndex > 60) foundIndex -= 60;
+				else foundIndex = 0;
+				richTextBox.SelectionStart = foundIndex;
+				richTextBox.ScrollToCaret();
+			}
+
+		}
+
 		private int FindAndColorTextNext(RichTextBox richTextBox, string textToFind, Color color)
 		{
 
@@ -145,7 +230,16 @@ namespace FindInFiles
 			int startIndex = richTextBox1.SelectionStart;
 			int count = 0;
 			
-			int foundIndex = richTextBox.Find(textToFind, startIndex, RichTextBoxFinds.MatchCase);
+			var findOptions = RichTextBoxFinds.None;
+			if (cMatchCase.Checked)
+			{
+				findOptions |= RichTextBoxFinds.MatchCase; // Inverted logic for RichTextBoxFinds.MatchCase
+			}
+			if (cMatchWholeWord.Checked)
+			{
+				findOptions |= RichTextBoxFinds.WholeWord;
+			}
+			int foundIndex = richTextBox.Find(textToFind, startIndex, findOptions);
 			if (foundIndex != -1)
 			{
 				richTextBox.SelectionStart = foundIndex;
@@ -179,8 +273,7 @@ namespace FindInFiles
 				lStatus.Text = "Selected File: " + listBox1.SelectedItem.ToString()+"   found: "+count1+ " blues and "+count2+" oranges";
 				lSelectedFile.Text = listBox1.SelectedItem.ToString();
 				bReplaceAllThisFile.Text = "Replace "+count1+" Items In This File Without Save";
-				richTextBox1.SelectionStart = 0;
-				richTextBox1.ScrollToCaret();
+				SeekToFirstOccurence(richTextBox1, tFind.Text);
 			}
 			catch
             {
@@ -254,7 +347,7 @@ namespace FindInFiles
 					{
 						string selectedpath = path + "\\" + listBox1.Items[i].ToString();
 						string selectedfile = System.IO.File.ReadAllText(selectedpath);
-						string replacedfile = selectedfile.Replace(tFind.Text, tReplace.Text);
+						string replacedfile = ReplaceString(selectedfile, tFind.Text, tReplace.Text, cMatchCase.Checked, cMatchWholeWord.Checked);// selectedfile.Replace(tFind.Text, tReplace.Text);
 						System.IO.File.WriteAllText(selectedpath, replacedfile);
 						success++;
 					}
@@ -274,16 +367,16 @@ namespace FindInFiles
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-			if (Width < 1043) Width = 1043;
-			if (Height < 315) Height = 315;
-			listBox1.Left = 25; 
-			listBox1.Width = (Width - 80) / 2;
-			richTextBox1.Width = (Width - 80) / 2;
-			richTextBox1.Left = listBox1.Width + 40;
-			pThisFile.Left = richTextBox1.Left;
-			listBox1.Height = (Height - listBox1.Top - 60);
-			richTextBox1.Height = listBox1.Height;
-
+			if (WindowState != FormWindowState.Minimized)
+			{
+				if(listBox1.Left!=25) listBox1.Left = 25;
+				if (listBox1.Width != (Width - 80) / 2) listBox1.Width = (Width - 80) / 2;
+				if(richTextBox1.Width != (Width - 80) / 2) richTextBox1.Width = (Width - 80) / 2;
+				if(richTextBox1.Left != listBox1.Width + 40)richTextBox1.Left = listBox1.Width + 40;
+				if(pThisFile.Left != richTextBox1.Left) pThisFile.Left = richTextBox1.Left;
+				if(listBox1.Height != (Height - listBox1.Top - 60))listBox1.Height = (Height - listBox1.Top - 60);
+				if(richTextBox1.Height != listBox1.Height)richTextBox1.Height = listBox1.Height;
+			}
 		}
 
         private void Form1_Load(object sender, EventArgs e)
@@ -291,6 +384,7 @@ namespace FindInFiles
 			try
 			{
 			  txtFileTypes.Text= System.IO.File.ReadAllText("filetypes.txt");
+				Form1_Resize(sender, e);
 			}
 			catch { }
 			
@@ -359,5 +453,12 @@ namespace FindInFiles
 			}
 
 		}
-	}
+
+        private void bChange_Click(object sender, EventArgs e)
+        {
+			string replace = tReplace.Text;
+			tReplace.Text = tFind.Text;
+			tFind.Text = replace;
+        }
+    }
 }

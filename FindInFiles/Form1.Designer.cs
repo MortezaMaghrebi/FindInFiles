@@ -44,13 +44,16 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.bReplaceAllThisFile = new System.Windows.Forms.Button();
             this.bSaveThisFile = new System.Windows.Forms.Button();
-            this.bpaste1 = new System.Windows.Forms.Button();
-            this.bpaste2 = new System.Windows.Forms.Button();
             this.lItemsFound = new System.Windows.Forms.Label();
             this.lSelectedFile = new System.Windows.Forms.Label();
             this.pThisFile = new System.Windows.Forms.Panel();
             this.bReplaceThis = new System.Windows.Forms.Button();
             this.bFindNext = new System.Windows.Forms.Button();
+            this.bChange = new System.Windows.Forms.Button();
+            this.bpaste2 = new System.Windows.Forms.Button();
+            this.bpaste1 = new System.Windows.Forms.Button();
+            this.cMatchWholeWord = new System.Windows.Forms.CheckBox();
+            this.cMatchCase = new System.Windows.Forms.CheckBox();
             this.pThisFile.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,7 +91,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 59);
+            this.label1.Location = new System.Drawing.Point(17, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 3;
@@ -97,7 +100,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 88);
+            this.label2.Location = new System.Drawing.Point(16, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 4;
@@ -107,16 +110,16 @@
             // 
             this.tFind.Location = new System.Drawing.Point(73, 56);
             this.tFind.Name = "tFind";
-            this.tFind.Size = new System.Drawing.Size(180, 20);
+            this.tFind.Size = new System.Drawing.Size(124, 20);
             this.tFind.TabIndex = 5;
             this.tFind.Text = "FALSE";
             this.tFind.TextChanged += new System.EventHandler(this.tFind_TextChanged);
             // 
             // tReplace
             // 
-            this.tReplace.Location = new System.Drawing.Point(73, 85);
+            this.tReplace.Location = new System.Drawing.Point(73, 87);
             this.tReplace.Name = "tReplace";
-            this.tReplace.Size = new System.Drawing.Size(181, 20);
+            this.tReplace.Size = new System.Drawing.Size(124, 20);
             this.tReplace.TabIndex = 6;
             this.tReplace.TextChanged += new System.EventHandler(this.tReplace_TextChanged);
             // 
@@ -127,7 +130,7 @@
             this.bFindAll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(240)))), ((int)(((byte)(53)))), ((int)(((byte)(8)))));
             this.bFindAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(240)))), ((int)(((byte)(53)))), ((int)(((byte)(8)))));
             this.bFindAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bFindAll.Location = new System.Drawing.Point(298, 54);
+            this.bFindAll.Location = new System.Drawing.Point(227, 54);
             this.bFindAll.Name = "bFindAll";
             this.bFindAll.Size = new System.Drawing.Size(188, 23);
             this.bFindAll.TabIndex = 7;
@@ -142,7 +145,7 @@
             this.bReplaceAll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(240)))), ((int)(((byte)(53)))), ((int)(((byte)(8)))));
             this.bReplaceAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(240)))), ((int)(((byte)(53)))), ((int)(((byte)(8)))));
             this.bReplaceAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bReplaceAll.Location = new System.Drawing.Point(298, 83);
+            this.bReplaceAll.Location = new System.Drawing.Point(227, 85);
             this.bReplaceAll.Name = "bReplaceAll";
             this.bReplaceAll.Size = new System.Drawing.Size(188, 23);
             this.bReplaceAll.TabIndex = 8;
@@ -218,30 +221,6 @@
             this.bSaveThisFile.UseVisualStyleBackColor = true;
             this.bSaveThisFile.Click += new System.EventHandler(this.bSaveThisFile_Click);
             // 
-            // bpaste1
-            // 
-            this.bpaste1.BackgroundImage = global::FindInFiles.Properties.Resources.icons8_paste_32;
-            this.bpaste1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.bpaste1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bpaste1.Location = new System.Drawing.Point(260, 56);
-            this.bpaste1.Name = "bpaste1";
-            this.bpaste1.Size = new System.Drawing.Size(21, 20);
-            this.bpaste1.TabIndex = 15;
-            this.bpaste1.UseVisualStyleBackColor = true;
-            this.bpaste1.Click += new System.EventHandler(this.bpaste1_Click);
-            // 
-            // bpaste2
-            // 
-            this.bpaste2.BackgroundImage = global::FindInFiles.Properties.Resources.icons8_paste_32;
-            this.bpaste2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.bpaste2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bpaste2.Location = new System.Drawing.Point(260, 84);
-            this.bpaste2.Name = "bpaste2";
-            this.bpaste2.Size = new System.Drawing.Size(21, 20);
-            this.bpaste2.TabIndex = 16;
-            this.bpaste2.UseVisualStyleBackColor = true;
-            this.bpaste2.Click += new System.EventHandler(this.bpaste2_Click);
-            // 
             // lItemsFound
             // 
             this.lItemsFound.AutoSize = true;
@@ -305,12 +284,82 @@
             this.bFindNext.UseVisualStyleBackColor = true;
             this.bFindNext.Click += new System.EventHandler(this.bFindNext_Click);
             // 
+            // bChange
+            // 
+            this.bChange.BackgroundImage = global::FindInFiles.Properties.Resources.icons8_change_32;
+            this.bChange.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bChange.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.bChange.FlatAppearance.BorderSize = 0;
+            this.bChange.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.bChange.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bChange.Location = new System.Drawing.Point(46, 69);
+            this.bChange.Name = "bChange";
+            this.bChange.Size = new System.Drawing.Size(21, 20);
+            this.bChange.TabIndex = 20;
+            this.bChange.UseVisualStyleBackColor = true;
+            this.bChange.Click += new System.EventHandler(this.bChange_Click);
+            // 
+            // bpaste2
+            // 
+            this.bpaste2.BackgroundImage = global::FindInFiles.Properties.Resources.icons8_paste_32;
+            this.bpaste2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bpaste2.FlatAppearance.BorderSize = 0;
+            this.bpaste2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.bpaste2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bpaste2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bpaste2.Location = new System.Drawing.Point(200, 86);
+            this.bpaste2.Name = "bpaste2";
+            this.bpaste2.Size = new System.Drawing.Size(21, 20);
+            this.bpaste2.TabIndex = 16;
+            this.bpaste2.UseVisualStyleBackColor = true;
+            this.bpaste2.Click += new System.EventHandler(this.bpaste2_Click);
+            // 
+            // bpaste1
+            // 
+            this.bpaste1.BackgroundImage = global::FindInFiles.Properties.Resources.icons8_paste_32;
+            this.bpaste1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bpaste1.FlatAppearance.BorderSize = 0;
+            this.bpaste1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.bpaste1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.bpaste1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bpaste1.Location = new System.Drawing.Point(200, 56);
+            this.bpaste1.Name = "bpaste1";
+            this.bpaste1.Size = new System.Drawing.Size(21, 20);
+            this.bpaste1.TabIndex = 15;
+            this.bpaste1.UseVisualStyleBackColor = true;
+            this.bpaste1.Click += new System.EventHandler(this.bpaste1_Click);
+            // 
+            // cMatchWholeWord
+            // 
+            this.cMatchWholeWord.AutoSize = true;
+            this.cMatchWholeWord.Location = new System.Drawing.Point(421, 60);
+            this.cMatchWholeWord.Name = "cMatchWholeWord";
+            this.cMatchWholeWord.Size = new System.Drawing.Size(119, 17);
+            this.cMatchWholeWord.TabIndex = 21;
+            this.cMatchWholeWord.Text = "Match Whole Word";
+            this.cMatchWholeWord.UseVisualStyleBackColor = true;
+            // 
+            // cMatchCase
+            // 
+            this.cMatchCase.AutoSize = true;
+            this.cMatchCase.Checked = true;
+            this.cMatchCase.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cMatchCase.Location = new System.Drawing.Point(421, 83);
+            this.cMatchCase.Name = "cMatchCase";
+            this.cMatchCase.Size = new System.Drawing.Size(83, 17);
+            this.cMatchCase.TabIndex = 22;
+            this.cMatchCase.Text = "Match Case";
+            this.cMatchCase.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1108, 498);
+            this.Controls.Add(this.cMatchCase);
+            this.Controls.Add(this.cMatchWholeWord);
             this.Controls.Add(this.pThisFile);
             this.Controls.Add(this.lItemsFound);
             this.Controls.Add(this.bpaste2);
@@ -328,7 +377,9 @@
             this.Controls.Add(this.bBrowse);
             this.Controls.Add(this.tBrowse);
             this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.bChange);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(1124, 315);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Find In Files";
@@ -364,6 +415,9 @@
         private System.Windows.Forms.Panel pThisFile;
         private System.Windows.Forms.Button bReplaceThis;
         private System.Windows.Forms.Button bFindNext;
+        private System.Windows.Forms.Button bChange;
+        private System.Windows.Forms.CheckBox cMatchWholeWord;
+        private System.Windows.Forms.CheckBox cMatchCase;
     }
 }
 

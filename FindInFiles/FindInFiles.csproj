@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons8_browse_folder.ico" />
+    <None Include="Resources\icons8_change_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
