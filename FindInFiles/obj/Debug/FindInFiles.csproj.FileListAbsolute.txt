@@ -9,3 +9,14 @@ E:\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.csproj.GenerateResource.
 E:\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.csproj.CoreCompileInputs.cache
 E:\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.exe
 E:\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.pdb
+C:\Users\m.maghrebi\Documents\Gitlab\FindInFiles\FindInFiles\bin\Debug\FindInFiles.exe.config
+C:\Users\m.maghrebi\Documents\Gitlab\FindInFiles\FindInFiles\bin\Debug\FindInFiles.exe
+C:\Users\m.maghrebi\Documents\Gitlab\FindInFiles\FindInFiles\bin\Debug\FindInFiles.pdb
+C:\Users\m.maghrebi\Documents\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.csproj.AssemblyReference.cache
+C:\Users\m.maghrebi\Documents\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.csproj.SuggestedBindingRedirects.cache
+C:\Users\m.maghrebi\Documents\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.Form1.resources
+C:\Users\m.maghrebi\Documents\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.Properties.Resources.resources
+C:\Users\m.maghrebi\Documents\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.csproj.GenerateResource.cache
+C:\Users\m.maghrebi\Documents\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.csproj.CoreCompileInputs.cache
+C:\Users\m.maghrebi\Documents\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.exe
+C:\Users\m.maghrebi\Documents\Gitlab\FindInFiles\FindInFiles\obj\Debug\FindInFiles.pdb
