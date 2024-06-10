@@ -49,8 +49,8 @@
             this.lItemsFound = new System.Windows.Forms.Label();
             this.lSelectedFile = new System.Windows.Forms.Label();
             this.pThisFile = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bReplaceThis = new System.Windows.Forms.Button();
+            this.bFindNext = new System.Windows.Forms.Button();
             this.pThisFile.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -265,8 +265,8 @@
             // 
             // pThisFile
             // 
-            this.pThisFile.Controls.Add(this.button2);
-            this.pThisFile.Controls.Add(this.button1);
+            this.pThisFile.Controls.Add(this.bReplaceThis);
+            this.pThisFile.Controls.Add(this.bFindNext);
             this.pThisFile.Controls.Add(this.bReplaceAllThisFile);
             this.pThisFile.Controls.Add(this.lSelectedFile);
             this.pThisFile.Controls.Add(this.bSaveThisFile);
@@ -275,35 +275,35 @@
             this.pThisFile.Size = new System.Drawing.Size(532, 74);
             this.pThisFile.TabIndex = 19;
             // 
-            // button2
+            // bReplaceThis
             // 
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button2.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(240)))), ((int)(((byte)(53)))), ((int)(((byte)(8)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(240)))), ((int)(((byte)(53)))), ((int)(((byte)(8)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(357, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(71, 23);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Replace";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.bReplaceThis.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.bReplaceThis.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.bReplaceThis.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(240)))), ((int)(((byte)(53)))), ((int)(((byte)(8)))));
+            this.bReplaceThis.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(240)))), ((int)(((byte)(53)))), ((int)(((byte)(8)))));
+            this.bReplaceThis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bReplaceThis.Location = new System.Drawing.Point(357, 3);
+            this.bReplaceThis.Name = "bReplaceThis";
+            this.bReplaceThis.Size = new System.Drawing.Size(71, 23);
+            this.bReplaceThis.TabIndex = 20;
+            this.bReplaceThis.Text = "Replace";
+            this.bReplaceThis.UseVisualStyleBackColor = true;
+            this.bReplaceThis.Click += new System.EventHandler(this.bReplaceThis_Click);
             // 
-            // button1
+            // bFindNext
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(240)))), ((int)(((byte)(53)))), ((int)(((byte)(8)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(240)))), ((int)(((byte)(53)))), ((int)(((byte)(8)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(282, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(71, 23);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Find Next";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bFindNext.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.bFindNext.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.bFindNext.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(240)))), ((int)(((byte)(53)))), ((int)(((byte)(8)))));
+            this.bFindNext.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(240)))), ((int)(((byte)(53)))), ((int)(((byte)(8)))));
+            this.bFindNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bFindNext.Location = new System.Drawing.Point(282, 3);
+            this.bFindNext.Name = "bFindNext";
+            this.bFindNext.Size = new System.Drawing.Size(71, 23);
+            this.bFindNext.TabIndex = 19;
+            this.bFindNext.Text = "Find Next";
+            this.bFindNext.UseVisualStyleBackColor = true;
+            this.bFindNext.Click += new System.EventHandler(this.bFindNext_Click);
             // 
             // Form1
             // 
@@ -362,8 +362,8 @@
         private System.Windows.Forms.Label lItemsFound;
         private System.Windows.Forms.Label lSelectedFile;
         private System.Windows.Forms.Panel pThisFile;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bReplaceThis;
+        private System.Windows.Forms.Button bFindNext;
     }
 }
 

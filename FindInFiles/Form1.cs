@@ -338,21 +338,26 @@ namespace FindInFiles
 			catch { }
 		}
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        
+
+		private void bFindNext_Click(object sender, EventArgs e)
+		{
 
 			int count1 = FindAndColorTextNext(richTextBox1, tFind.Text.ToString(), Color.Green);
 		}
 
-        private void button2_Click(object sender, EventArgs e)
-        {
+		private void bReplaceThis_Click(object sender, EventArgs e)
+		{
 			lStatus.Text = richTextBox1.SelectionStart.ToString() + "---" + richTextBox1.SelectionLength + "---" + richTextBox1.SelectedText;
 			if (richTextBox1.SelectedText.Equals(tFind.Text))
-            {
+			{
+				int selectedindex = richTextBox1.SelectionStart;
 				richTextBox1.SelectedText = tReplace.Text;
+				richTextBox1.SelectionStart = selectedindex;
+				richTextBox1.SelectionLength = tReplace.TextLength;
 				richTextBox1.SelectionBackColor = Color.OrangeRed;
-            }
+			}
 
 		}
-    }
+	}
 }
